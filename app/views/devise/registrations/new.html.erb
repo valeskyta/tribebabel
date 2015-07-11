@@ -21,6 +21,15 @@
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
+  <div class="form-group">
+    <%= f.label :gender, "I am:" %><br />
+    <%= f.select(:gender) do %>
+    <%= [['female', 'f'], ['male', 'm'], ['other', 'o']].each do |c| %>
+    <%= content_tag(:option, c.first, value: c.last) %>
+    <% end %>
+  <% end %>
+  </div>
+
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>

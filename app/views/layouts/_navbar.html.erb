@@ -1,0 +1,7 @@
+<% if user_signed_in?%>
+  <%= link_to "salir", destroy_user_session_path, method: "Delete" %>
+  <% else %>
+
+<%= link_to "ingresar", new_user_session_path %>
+<%= link_to "registrarse", new_user_registration_path %>
+<% end %>
