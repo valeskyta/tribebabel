@@ -1,0 +1,32 @@
+<h2>Choose your native language</h2>
+<%= form_for(@language_user) do |f| %>
+<ul>
+	<% @languages.each do |language| %>
+	<li>
+		<%= check_box_tag 'language_ids[]', language.id -%>
+		<%= h language.name -%>
+	</li>
+	<% end %>
+
+</ul>
+<%= f.submit %>
+<% end %>
+
+<h2>Your native languages are</h2>
+
+<% if @languages_user.any? %>
+
+<ul>
+	<% @languages_user.each do |language| %>
+	<li>
+		<%= language.name %>-<%= language.id %>
+	</li>
+	<% end %>
+
+</ul>
+<% else %>
+<p>You haven't select any language</p>
+<% end %>
+
+
+

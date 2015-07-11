@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'language_users/index'
+
+  get 'language_users/create'
+  resources :language_users
   resources :languages
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.

@@ -6,4 +6,8 @@ class User < ActiveRecord::Base
 
   has_many :languageUsers
   has_many :languages, through: :languageUsers
+
+  def has_language? language_id
+    self.languages.where(id: language_id).any?
+  end
 end
