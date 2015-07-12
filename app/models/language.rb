@@ -1,4 +1,4 @@
 class Language < ActiveRecord::Base
-  has_many :languageUsers
-  has_many :users, through: :languageUsers
+  has_many :language_users
+  has_many :users, through: :language_users
 end
