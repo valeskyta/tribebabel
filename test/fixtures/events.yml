@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyText
+  event_date: 2015-07-12
+  hour: 2015-07-12 10:56:01
+  visibility: 1
+
+two:
+  title: MyString
+  description: MyText
+  event_date: 2015-07-12
+  hour: 2015-07-12 10:56:01
+  visibility: 1

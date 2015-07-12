@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Invitation Lists</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Event</th>
+      <th>Status</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @invitation_lists.each do |invitation_list| %>
+      <tr>
+        <td><%= invitation_list.event_id %></td>
+        <td><%= invitation_list.status %></td>
+        <td><%= invitation_list.user %></td>
+        <td><%= link_to 'Show', invitation_list %></td>
+        <td><%= link_to 'Edit', edit_invitation_list_path(invitation_list) %></td>
+        <td><%= link_to 'Destroy', invitation_list, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Invitation list', new_invitation_list_path %>

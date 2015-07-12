@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :invitation_lists
+  resources :events
   resources :countries
   get 'comments/create'
 
