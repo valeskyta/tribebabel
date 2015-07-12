@@ -4,6 +4,9 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  validates :gender, presence:true
+  validates :country_id, presence:true
+
   has_many :languageUsers
   has_many :languages, through: :languageUsers
 

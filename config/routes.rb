@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :countries
   get 'comments/create'
 
     resources :posts do
