@@ -2,19 +2,15 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
+                  <% if user_signed_in?%>
                     <strong>Hello, </strong><%= current_user.email %>
-                    &nbsp;&nbsp;
- 
-                     <% if user_signed_in?%>
-                   <strong>  <%= link_to "Salir", destroy_user_session_path, method: "Delete", class: 'logout' %></strong>
+                     <%= link_to "salir", destroy_user_session_path, method: "Delete" %>
+                    &nbsp;&nbsp;                 
                     <% else %>
-
                    <strong>  <%= link_to "Ingresar", new_user_session_path %></strong>
                    <strong> <%= link_to "Registrarse", new_user_registration_path %></strong>
                     <% end %>
-
                 </div>
-
             </div>
         </div>
     </header>
