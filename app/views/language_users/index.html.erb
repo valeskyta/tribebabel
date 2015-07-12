@@ -1,32 +1,96 @@
-<h2>Choose your native language</h2>
-<%= form_for(@language_user) do |f| %>
-<ul>
-	<% @languages.each do |language| %>
+<div class="row">
+   	<div class="col-md-12">
+ 
+ 		<%= form_for(@language_user) do |f| %>
+		
+		 <div class="col-md-6">            
+               <h4 class="page-head-line">Choose your native language</h4>
+
+               <ul class="list-unstyled  ">
+         			<% @languages.each do |language| %>
+         			<li>
+         				<%= check_box_tag 'language_ids[]', language.id -%>
+         				<%= h language.name -%>
+         			</li>
+         			<% end %>
+         		</ul>
+            </div>
+          
+                    
+            <div class="col-md-6">
+                      <h4 class="page-head-line">Choose your Second languages</h4>
+  
+                <ul class="list-unstyled  ">
+                  <% @languages.each do |language| %>
+                  <li>
+                     <%= check_box_tag 'second_language_ids[]', language.id -%>
+                     <%= h language.name -%>
+                  </li>
+                  <% end %>
+               </ul>
+             </div>
+         
+
+
+
+		<%= f.submit "Save my languages", class: 'btn btn-success pull-right' %>
+		<% end %>
+
+	 </div>
+      
+   </div>
+
+<div class="row">
+   	<div class="col-md-12">
+<h4 class="page-head-line">Your native languages are</h4>
+ 
+
+<% if @native_languages_user.any? %>
+
+<ul class="list-unstyled">
+	<% @native_languages_user.each do |language| %>
 	<li>
-		<%= check_box_tag 'language_ids[]', language.id -%>
-		<%= h language.name -%>
-	</li>
-	<% end %>
-
-</ul>
-<%= f.submit %>
-<% end %>
-
-<h2>Your native languages are</h2>
-
-<% if @languages_user.any? %>
-
-<ul>
-	<% @languages_user.each do |language| %>
-	<li>
-		<%= language.name %>-<%= language.id %>
+		<p class=""><%= language.name %> - <%= language.id %></p>
 	</li>
 	<% end %>
 
 </ul>
 <% else %>
-<p>You haven't select any language</p>
+<p>You haven't select any native language.</p>
 <% end %>
+
+ </div>
+      
+   </div>
+
+
+   <div class="row">
+   	<div class="col-md-12">
+<h4 class="page-head-line">Your native languages are</h4>
+ 
+
+<% if @second_languages_user.any? %>
+
+<ul class="list-unstyled">
+	<% @second_languages_user.each do |language| %>
+	<li>
+		<p class=""><%= language.name %> - <%= language.id %></p>
+	</li>
+	<% end %>
+
+</ul>
+<% else %>
+<p>You haven't select any second language.</p>
+<% end %>
+
+ </div>
+      
+   </div>
+
+
+
+
+
 
 
 
