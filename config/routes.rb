@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :posts
   get 'language_users/index'
 
   get 'language_users/create'
