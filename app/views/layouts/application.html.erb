@@ -7,33 +7,34 @@
   <%= csrf_meta_tags %>
 </head>
 <body class="">
- 
+
 
 
  <section id="container" >
 
-   
- 
-  
+
+
+
 
         <%= render "layouts/header" %>
 
         <%= render "layouts/navbar" %>
 
- 
+
 
  <!--main content start-->
         <div class="content-wrapper">
             <div class="container">
-
+                 <span class="notice text-danger text-center h3" ><%= notice %></span>
+                 <span class="alert text-danger text-center h3"><%= alert %></span>
                 <%= yield %>
 
             </div>
 
           </div>
-  
+
         <%= render "layouts/footer" %>
- 
+
     </section>
 
 

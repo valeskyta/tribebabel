@@ -2,23 +2,21 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                 <span class="notice"><%= notice %></span>
-                 <span class="alert"><%= alert %></span>
+
                   <% if user_signed_in?%>
                     <strong>Hello, </strong><%= current_user.email %>
                      <%= link_to "salir", destroy_user_session_path, method: "Delete" %>
-                    &nbsp;&nbsp;                 
+                    &nbsp;&nbsp;
                     <% else %>
                    <strong>  <%= link_to "Sign in", new_user_session_path %></strong>
                    <strong> <%= link_to "Sign up", new_user_registration_path %></strong>
                     <% end %>
 
-                    
-                
+
+
 
 
                 </div>
             </div>
         </div>
     </header>
- 
