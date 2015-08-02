@@ -1,37 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Tribesbabel</title>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <title>Spanglish</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
 </head>
-<body class="">
+<body>
 
-
-
- <section id="container" >
-
-
-
-
-
-        <%= render "layouts/header" %>
+ <section>
 
         <%= render "layouts/navbar" %>
 
-
-
  <!--main content start-->
-        <div class="content-wrapper">
-            <div class="container">
+
                  <span class="notice text-danger text-center h3" ><%= notice %></span>
                  <span class="alert text-danger text-center h3"><%= alert %></span>
                 <%= yield %>
-
-            </div>
-
-          </div>
 
         <%= render "layouts/footer" %>
 
@@ -40,3 +30,7 @@
 
 </body>
 </html>
+
+
+
+

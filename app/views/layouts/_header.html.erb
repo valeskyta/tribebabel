@@ -1,22 +1,14 @@
-  <header>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-
-                  <% if user_signed_in?%>
-                    <strong>Hello, </strong><%= current_user.email %>
-                     <%= link_to "salir", destroy_user_session_path, method: "Delete" %>
-                    &nbsp;&nbsp;
-                    <% else %>
-                   <strong>  <%= link_to "Sign in", new_user_session_path %></strong>
-                   <strong> <%= link_to "Sign up", new_user_registration_path %></strong>
-                    <% end %>
+<% if user_signed_in?%>
+  <strong>Hello, </strong><%= current_user.email %>
+   <%= link_to "salir", destroy_user_session_path, method: "Delete", :style => 'color:orange'%>
+  &nbsp;&nbsp;
+  <% else %>
+ <strong>  <%= link_to "Sign in", new_user_session_path %></strong>
+ <strong> <%= link_to "Sign up", new_user_registration_path %></strong>
+  <% end %>
 
 
 
 
 
-                </div>
-            </div>
-        </div>
-    </header>
+
