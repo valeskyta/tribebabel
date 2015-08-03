@@ -1,24 +1,44 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @event.title %>
-</p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @event.description %>
-</p>
+<div class="container">
+  <div class="row">
+    <div class="[ col-xs-12 col-sm-offset-2 col-sm-8 ]">
 
-<p>
-  <strong>Event date:</strong>
-  <%= @event.event_date %>
-</p>
+      <div class="panel panel-default">
 
-<p>
-  <strong>Hour:</strong>
-  <%= @event.hour %>
-</p>
+        <div class="panel-heading">
+          <strong>Title:</strong>
+          <%= @event.title %>
+        </div>
+
+        <div class="img-responsive">
+          <%= image_tag('party.jpg', :class => "img-responsive")  %>
+
+        </div>
+
+        <div class="panel-heading">
+         <strong>Event date:</strong>  <%= @event.event_date.strftime('%A') %>  <%= @event.event_date.strftime('%v') %>
+         <span>   </span>
+         <strong>Time:</strong> <%= @event.hour.strftime('%R') %>
+       </div>
+
+      <div class="panel-heading">
+         <strong>Address:</strong>  <%= @event.address %>
+       </div>
+
+
+
+       <div class="panel-body">
+         <strong>Description:</strong>
+         <p>
+         <%= @event.description %>
+         </p>
+       </div>
+     </div>
+   </div>
+ </div>
+</div>
 
 <p>
   <strong>Visibility:</strong>

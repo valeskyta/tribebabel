@@ -1,85 +1,96 @@
-<div class="row">
-  <div class="col-md-12">
+<div class="container">
+  <div class="row">
+    <%= form_for(@language_user) do |f| %>
 
-   <%= form_for(@language_user) do |f| %>
+    <div class="col-sm-6 col-md-4">
+      <div class="thumbnail">
+        <div class="container" style="padding:10px 30px">
+          <h4>Select your native language</h4>
+          <h5>(Fluent)</h5>
+          <ul class="list-unstyled  ">
+            <% @languages.each do |language| %>
+            <li>
+              <h5>
+               <%= check_box_tag 'language_ids[]', language.id -%>
+               <%= h language.name -%>
+             </h5>
+           </li>
+           <% end %>
+         </ul>
+         <%= f.submit "Select", class: 'btn btn-primary' %>
+       </div>
+     </div>
+   </div>
 
-   <div class="col-md-6">
-     <h4 class="page-head-line">Choose your native language</h4>
+   <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <div class="container" style="padding:10px 30px">
 
-     <ul class="list-unstyled  ">
-      <% @languages.each do |language| %>
-      <li>
-       <%= check_box_tag 'language_ids[]', language.id -%>
-       <%= h language.name -%>
-     </li>
-     <% end %>
-   </ul>
+
+        <h4>Select your Second languages</h4>
+        <h5>(Learning or practicing)</h5>
+        <ul class="list-unstyled  ">
+          <% @languages.each do |language| %>
+          <li>
+            <h5>
+             <%= check_box_tag 'second_language_ids[]', language.id -%>
+             <%= h language.name -%>
+           </h5>
+         </li>
+         <% end %>
+       </ul>
+
+       <%= f.submit "Select", class: 'btn btn-primary' %>
+       <% end %>
+     </div>
+   </div>
  </div>
 
+ <div class="col-sm-6 col-md-4">
+  <div class="thumbnail">
+    <div class="container" style="padding:2px 30px">
+      <h3>Connect with your Tribes!</h3>
+      <h4>As native speaker:</h4>
 
- <div class="col-md-6">
-  <h4 class="page-head-line">Choose your Second languages</h4>
 
-  <ul class="list-unstyled  ">
-    <% @languages.each do |language| %>
-    <li>
-     <%= check_box_tag 'second_language_ids[]', language.id -%>
-     <%= h language.name -%>
-   </li>
-   <% end %>
- </ul>
+      <% if @native_languages_user.any? %>
+
+      <ul class="list-unstyled">
+       <% @native_languages_user.each do |language| %>
+       <li>
+         <h4 class="glyphicon glyphicon-globe"style="padding: 5px 1px 0px 10px; color:#df691a">
+          <%= language.name %> </h4>
+        </li>
+        <% end %>
+
+      </ul>
+      <% else %>
+      <p>You haven't select any native language.</p>
+      <% end %>
+
+
+      <h4>As a second language:</h4>
+
+
+      <% if @second_languages_user.any? %>
+
+      <ul class="list-unstyled">
+
+        <% @second_languages_user.each do |language| %>
+        <li>
+          <h4 class="glyphicon glyphicon-globe"style="padding: 5px 1px 0px 10px; color:#df691a">
+            <%= language.name %> </h4>
+          </li>
+          <% end %>
+
+        </ul>
+        <% else %>
+        <p>You haven't select any second language.</p>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
-
-
-
-
-<%= f.submit "Save my languages", class: 'btn btn-success pull-right' %>
-<% end %>
-
-</div>
-
-</div>
-
-<div class="row">
-  <div class="col-md-6">
-    <h5 class="page-head-line">Your native languages are</h5>
-
-
-    <% if @native_languages_user.any? %>
-
-    <ul class="list-unstyled">
-     <% @native_languages_user.each do |language| %>
-     <li>
-      <p class=""><%= language.name %> </p>
-    </li>
-    <% end %>
-
-  </ul>
-  <% else %>
-  <p>You haven't select any native language.</p>
-  <% end %>
-
-</div>
-<div class="col-md-6">
-  <h5 class="page-head-line">Your second languages are</h5>
-
-
-  <% if @second_languages_user.any? %>
-
-  <ul class="list-unstyled">
-    <% @second_languages_user.each do |language| %>
-    <li>
-    <p class=""><%= language.name %> </p>
-    </li>
-    <% end %>
-
-  </ul>
-  <% else %>
-  <p>You haven't select any second language.</p>
-  <% end %>
-
-</div>
-
 </div>
 
 
