@@ -1,0 +1,34 @@
+<!-- Trigger the modal with a button -->
+
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Hi! What is your name?</h4>
+      </div>
+      <div class="modal-body">
+
+       <%= form_tag 'users/edit' do %>
+        <div class="field">
+        <%= label_tag :name %><br />
+        <%= text_field_tag :user_name, "", autofocus: true %>
+      </div>
+        <strong><%= link_to 'Submit', new_post_path %></strong>
+      <% end %>
+
+
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>

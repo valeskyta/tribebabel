@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+
+  post 'users/edit'
+  # users_controler.rb metodo edit
+
   resources :invitation_lists
   resources :events
   resources :countries
@@ -18,7 +22,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'languages#index'
+  root 'welcome#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -1,12 +1,16 @@
    <p id="notice"><%= notice %></p>
 
-   <h4 class="page-head-line">Events in Santiago</h4>
+
 
 
    <div class="container">
 
     <div class="row">
       <div class="[ col-xs-12 col-sm-offset-2 col-sm-8 ]">
+      <strong>
+      <h3>Events in Santiago</h3>
+      </strong>
+
         <ul class="event-list">
         <% @events.each do |event| %>
           <li>
@@ -18,7 +22,7 @@
 
             <div class="info", style="color: grey">
               <h2 class="title" style="padding-bottom: 10px"><%= event.title %></h2>
-              <p class="desc"><%= event.description %></p>
+              <p class="desc"><%= truncate(event.description, length: 50) %></p>
               <p class="time" style="padding: 10px 10px 0px 10px">Address: <%= event.address %></p>
               <ul>
                 <li style="width:70%;"><%= event.event_date.strftime('%A') %> <%= event.hour.strftime('%R') %> <span class="glyphicon glyphicon-time"></span></li>

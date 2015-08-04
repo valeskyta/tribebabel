@@ -1,106 +1,51 @@
-<p id="notice"><%= notice %></p>
-
 <div class="container">
-  <div class="jumbotron imgfondo">
-      <h1>Spanglish!</h1>
-      <p>The best community in Santiago Chile</p>
-      <p><a class="btn btn-warning btn-lg" href="#" role="button">Join us!</a></p>
+  <div class="[ col-xs-12 col-sm-offset-2 col-sm-8 ]">
+    <h3>Listing Posts</h3>
+
+
+    <% @posts.each do |post| %>
+    <div>
+      <div class="thumbnail" style= "margin-bottom: 2px">
+        <strong>Post by:  </strong><%= current_user.email %>
+      </div>
+      <div class="thumbnail" style= "margin-bottom: 2px">
+        <%= post.title %>
+      </div>
     </div>
 
-    <div class="row">
-      <div class="col-sm-5 col-md-3">
-        <div class="thumbnail">
-          <a href='https://www.facebook.com/groups/Spanglish.II/'>
-          <%= image_tag 's_1.jpg'%>
-        </a>
-          <div class="caption">
-            <h3>Language Exchange</h3>
-            <p>...</p>
-            <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-          </div>
-        </div>
-      </div>
+    <div class="thumbnail" style= "margin-bottom: 0px">
+      <%= post.content %>
+    </div>
 
-      <div class="col-sm-5 col-md-3">
-        <div class="thumbnail">
-          <a href='https://www.facebook.com/groups/Spanglish.II/'>
-          <%= image_tag 's_2.jpg'%>
-        </a>
-          <div class="caption">
-            <h3>Tours & Trips</h3>
-            <p>...</p>
-            <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-          </div>
-        </div>
-      </div>
+    <div style="margin-bottom: 20px">
 
-      <div class="col-sm-5 col-md-3">
-        <div class="thumbnail">
-          <a href='https://www.facebook.com/groups/Spanglish.II/'>
-          <%= image_tag 's_3.jpg'%>
-        </a>
-          <div class="caption">
-            <h3>Volunteering</h3>
-            <p>...</p>
-            <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-          </div>
-        </div>
-      </div>
-      <div class="row">
+      <%= link_to 'Show', post %>
 
-      <div class="col-sm-5 col-md-3">
-        <div class="thumbnail">
-          <a href='https://www.facebook.com/groups/Spanglish.II/'>
-          <%= image_tag 's_1.jpg'%>
-        </a>
-          <div class="caption">
-            <h3>Accomodation</h3>
-            <p>...</p>
-            <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-          </div>
-        </div>
-      </div>
+      <%= link_to 'Edit', edit_post_path(post) %>
 
+
+      <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
 
     </div>
+    <div>
+      <%= render partial: "comments/comment", collection: @last_comments %>
+    </div>
+    <% end %>
+
+
+
+    <li class="btn btn-danger" style="margin-bottom: 20px">
+      <% unless current_user.name.nil? %>
+      <strong><%= link_to 'New Post', new_post_path %></strong>
+      <% else %>
+      <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+      <%= render "shared/modal" %>
+      <% end %>
+    </li>
+
+  </div>
+
 </div>
 
 
 
-
-
-
-
-
-
-
-
-
-
-<h1>Listing Posts</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Content</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.title %></td>
-        <td><%= post.content %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Post', new_post_path %>

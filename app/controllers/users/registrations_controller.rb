@@ -13,10 +13,7 @@ before_filter :configure_sign_up_params, only: [:create]
 
 
 
-  # GET /resource/edit
-  # def edit
-  #   super
-  # end
+
 
   # PUT /resource
   # def update
@@ -42,7 +39,7 @@ before_filter :configure_sign_up_params, only: [:create]
   # You can put the params you want to permit in the empty array.
      def configure_sign_up_params
       #devise_parameter_sanitizer.for(:sign_up) << :email, :password, :password_confirmation
-       devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:email, :password, :password_confirmation, :gender, :country_id) }
+       devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:email, :password, :password_confirmation, :gender, :country_id, :name) }
      end
 
   # You can put the params you want to permit in the empty array.
