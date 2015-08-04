@@ -34,18 +34,19 @@
 
 
 
-    <li class="btn btn-danger" style="margin-bottom: 20px">
+    <span style="margin-bottom: 20px">
       <% unless current_user.name.nil? %>
       <strong><%= link_to 'New Post', new_post_path %></strong>
       <% else %>
-      <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+      <button data-toggle="modal" class="btn btn-primary" data-target="#myModal">New Post</button>
       <%= render "shared/modal" %>
       <% end %>
-    </li>
+    </span>
 
   </div>
 
 </div>
+
 
 
 

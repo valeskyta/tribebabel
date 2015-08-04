@@ -1,21 +1,33 @@
-<div class="post">
- <p id="notice"><%= notice %></p>
+<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @post.title %>
-</p>
+<div class="container">
+	<div class="row">
+		<div class="[ col-xs-12 col-sm-offset-2 col-sm-8 ]">
 
-<div class="well well-lg">
-  <strong>Content:</strong>
-  <%= @post.content %>
+			<div class="panel panel-default">
+
+				<div class="panel-heading">
+					<strong>Title:</strong>
+					<%= @post.title %>
+				</div>
+
+
+				<div class="panel-heading">
+					<strong>Content:</strong>
+					<%= @post.content %>
+				</div>
+
+				<%= link_to 'Edit', edit_post_path(@post) %> |
+				<%= link_to 'Back', posts_path %>
+			</div>
+			<div class="panel panel-default" style="padding: 30px">
+				<%= render partial: "comments/comment", collection: @last_comments %>
+
+			</div>
+
+			<%= render "comments/form" %>
+
+		</div>
+	</div>
 </div>
 
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
-</div>
-
-<%= render partial: "comments/comment", collection: @last_comments %>
-<%= render "comments/form" %>
-
-</div>

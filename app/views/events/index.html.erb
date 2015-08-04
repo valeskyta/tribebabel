@@ -21,9 +21,9 @@
             <img alt="Independence Day" src="https://farm4.staticflickr.com/3100/2693171833_3545fb852c_q.jpg" />
 
             <div class="info", style="color: grey">
-              <h2 class="title" style="padding-bottom: 10px"><%= event.title %></h2>
-              <p class="desc"><%= truncate(event.description, length: 50) %></p>
-              <p class="time" style="padding: 10px 10px 0px 10px">Address: <%= event.address %></p>
+              <h2 class="title" style="padding-bottom: 5px"><%= event.title %></h2>
+              <p class="desc" style="padding-bottom: 5px"><%= truncate(event.description, length: 60) %></p>
+              <p class="desc">Address: <%= event.address %></p>
               <ul>
                 <li style="width:70%;"><%= event.event_date.strftime('%A') %> <%= event.hour.strftime('%R') %> <span class="glyphicon glyphicon-time"></span></li>
                 <!-- <li style="width:10%;"><%= event.visibility %></li> -->

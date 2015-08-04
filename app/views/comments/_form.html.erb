@@ -1,8 +1,12 @@
-<div calss="new-comment" style="background-color:gray">
-<%= form_for [@post, @comment] do |f| %>
-  <%= f.label :comment %>
-  <%= f.text_area :comment %>
+	<div class="panel panel-default">
 
-  <%= f.submit "enviar" %>
-  <% end %>
-</div>
+		<div class="panel-heading">
+			<%= form_for [@post, @comment] do |f| %>
+			<%= f.label :comment %>
+			<%= f.text_area :comment %>
+
+			<%= f.submit "enviar" %>
+			<% end %>
+		</div>
+	</div>
+

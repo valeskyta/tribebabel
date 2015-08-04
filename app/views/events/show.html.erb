@@ -7,9 +7,10 @@
 
       <div class="panel panel-default">
 
-        <div class="panel-heading">
-          <strong>Title:</strong>
+        <div class="panel-heading" style="font-size: 22px">
+          <strong>
           <%= @event.title %>
+          </strong>
         </div>
 
         <div class="img-responsive">
@@ -18,19 +19,19 @@
         </div>
 
         <div class="panel-heading">
-         <strong>Event date:</strong>  <%= @event.event_date.strftime('%A') %>  <%= @event.event_date.strftime('%v') %>
+         <%= @event.event_date.strftime('%A') %>  <%= @event.event_date.strftime('%v') %>
          <span>   </span>
-         <strong>Time:</strong> <%= @event.hour.strftime('%R') %>
+         <strong> - </strong> <%= @event.hour.strftime('%R') %> <span>hrs.   </span>
        </div>
 
-      <div class="panel-heading">
+      <div class="panel-heading" style="background-color: #C52C66">
          <strong>Address:</strong>  <%= @event.address %>
        </div>
 
 
 
        <div class="panel-body">
-         <strong>Description:</strong>
+
          <p>
          <%= @event.description %>
          </p>
