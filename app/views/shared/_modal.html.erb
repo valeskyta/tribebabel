@@ -13,12 +13,12 @@
       </div>
       <div class="modal-body">
 
-       <%= form_tag 'users/edit' do %>
+       <%= form_tag 'add_name' do %>
         <div class="field">
         <%= label_tag :name %><br />
         <%= text_field_tag :user_name, "", autofocus: true %>
       </div>
-        <strong><%= link_to 'Submit', new_post_path %></strong>
+        <%= submit_tag 'Enviar' %>
       <% end %>
 
 

@@ -10,7 +10,13 @@ class User < ActiveRecord::Base
   has_many :languageUsers
   has_many :languages, through: :languageUsers
 
+
+  has_many :posts, :dependent => :destroy
+  has_many :comments, :dependent => :destroy
+
   def has_language? language_id
     self.languages.where(id: language_id).any?
   end
 end
+
+
