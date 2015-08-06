@@ -72,3 +72,4 @@ class EventsController < ApplicationController
       params.require(:event).permit(:title, :description, :event_date, :hour, :visibility, :address)
     end
 end
+

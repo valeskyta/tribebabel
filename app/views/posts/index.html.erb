@@ -6,43 +6,49 @@
     <% @posts.each do |post| %>
     <div>
       <div class="thumbnail" style= "margin-bottom: 2px">
-        <strong>Post by:  </strong><%= current_user.email %>
+        <strong>Post by:</strong>
+        <p><%= post.user.name  %></p>
+
+
       </div>
-      <div class="thumbnail" style= "margin-bottom: 2px">
-        <%= post.title %>
-      </div>
+
     </div>
 
-    <div class="thumbnail" style= "margin-bottom: 0px">
-      <%= post.content %>
+    <div class="thumbnail" style= "margin-bottom: 2px">
+      <p>Post: <%= post.content %></p>
+    </div>
+
+    <div>
+      <div class="thumbnail" style= "margin-bottom: 2px">
+        <p>Comment: <%= truncate(post.comments.last.comment, length: 100) unless post.comments.last.nil? %></p>
+      </div>
     </div>
 
     <div style="margin-bottom: 20px">
 
-      <%= link_to 'Show', post %>
+      <%= link_to 'See more', post %>
 
-      <%= link_to 'Edit', edit_post_path(post) %>
+      <%= link_to 'Edit', edit_post_path(post) if can? :edit, post %>
 
 
-      <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } if can? :destroy, post%>
 
     </div>
-    <div>
-      <%= render partial: "comments/comment", collection: @last_comments %>
-    </div>
+
+
     <% end %>
 
 
-
-    <span style="margin-bottom: 20px">
-      <% unless current_user.name.nil? %>
-      <strong><%= link_to 'New Post', new_post_path %></strong>
-      <% else %>
-      <button data-toggle="modal" class="btn btn-primary" data-target="#myModal">New Post</button>
-      <%= render "shared/modal" %>
-      <% end %>
-    </span>
-
+    <% if user_signed_in? %>
+      <span style="margin-bottom: 20px">
+        <% unless current_user.name.nil? %>
+        <strong><%= link_to 'New Post', new_post_path %></strong>
+        <% else %>
+        <button data-toggle="modal" class="btn btn-primary" data-target="#myModal">New Post</button>
+        <%= render "shared/modal" %>
+        <% end %>
+      </span>
+    <% end %>
   </div>
 
 </div>

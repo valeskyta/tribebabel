@@ -8,9 +8,13 @@ class ApplicationController < ActionController::Base
   protected
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:email, :password, :password_confirmation, :gender, :country_id, :name) }
-
   end
+    rescue_from CanCan::AccessDenied do |exception|
+      redirect_to root_url, :alert => exception.message
+  end
+
 end
+
 
 
 

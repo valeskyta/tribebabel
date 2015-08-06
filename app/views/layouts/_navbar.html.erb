@@ -15,10 +15,13 @@
             <ul class="nav navbar-nav">
 
                 <li><a href="<%= root_path %>">Home</a></li>
-                <% if user_signed_in?%>
-                <li><a href= "<%= root_path %>"> Tribes</a></li>
-                <li><a href="<%= language_users_index_path  %>">Your Languages</a></li>
                 <li><a href="<%= posts_path  %>">Posts</a></li>
+
+                <% if user_signed_in?%>
+
+                <li><a href="<%= language_users_index_path  %>">Tribes</a></li>
+
+
                 <% end %>
                 <li><a href="<%= events_path %>">Events</a></li>
             </ul>
