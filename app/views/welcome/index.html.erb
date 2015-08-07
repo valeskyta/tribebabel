@@ -1,219 +1,52 @@
 <p id="notice"><%= notice %></p>
 <div class="container">
 
-          <div class="jumbotron imgfondo2">
+  <div class="jumbotron imgfondo2">
       <h1>Spanglish!</h1>
       <p>The best community in Santiago Chile</p>
-
 
                     <% if user_signed_in?%>
                 <strong>Hello, </strong><%= current_user.email %> <strong> ! </strong>
-
                 <% else %>
-
-
 
               <li class="btn btn-primary btn-lg" style="font-weight: bold"><%= link_to "Join us!", new_user_registration_path %></li>
 
-
                 <% end %>
-    </div>
+  </div>
 
+  <div class="row">
 
-
-
-
-
-
-
-    <div class="row">
       <div class="col-sm-5 col-md-3">
         <div class="thumbnail">
-          <a href='https://www.facebook.com/groups/Spanglish.II/'>
-          <%= image_tag 's_1.jpg'%>
-        </a>
-          <div class="caption">
-            <h3>Language Exchange</h3>
-            <p>...</p>
-            <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-          </div>
+          <a href="<%= events_path %>">
+            <%= image_tag 's_1.jpg'%>
+          </a>
         </div>
       </div>
 
       <div class="col-sm-5 col-md-3">
         <div class="thumbnail">
-          <a href='https://www.facebook.com/groups/Spanglish.II/'>
-          <%= image_tag 's_2.jpg'%>
-        </a>
-          <div class="caption">
-            <h3>Tours & Trips</h3>
-            <p>...</p>
-            <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-          </div>
+          <a href="<%= events_path %>">
+            <%= image_tag 's_2.jpg'%>
+          </a>
         </div>
       </div>
 
       <div class="col-sm-5 col-md-3">
         <div class="thumbnail">
-          <a href='https://www.facebook.com/groups/Spanglish.II/'>
-          <%= image_tag 's_3.jpg'%>
-        </a>
-          <div class="caption">
-            <h3>Volunteering</h3>
-            <p>...</p>
-            <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-          </div>
+          <a href="<%= events_path %>">
+            <%= image_tag 's_3.jpg'%>
+          </a>
         </div>
       </div>
-      <div class="row">
 
       <div class="col-sm-5 col-md-3">
         <div class="thumbnail">
-          <a href='https://www.facebook.com/groups/Spanglish.II/'>
-          <%= image_tag 's_1.jpg'%>
-        </a>
-          <div class="caption">
-            <h3>Accomodation</h3>
-            <p>...</p>
-            <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-          </div>
+          <a href="<%= events_path %>">
+            <%= image_tag 'Accommodation.jpg'%>
+          </a>
         </div>
       </div>
 
-
-    </div>
-
-
-
-
-  <div class="jumbotron imgfondo">
-      <h1>Spanglish!</h1>
-      <p>The best community in Santiago Chile</p>
-
-
-                    <% if user_signed_in?%>
-                <strong>Hello, </strong><%= current_user.email %>
-                 <%= link_to "salir", destroy_user_session_path, method: "Delete", :style => 'color:orange'%>
-                &nbsp;&nbsp;
-                <% else %>
-
-
-
-              <li class="btn btn-primary btn-lg" style="font-weight: bold"><%= link_to "Join us!", new_user_registration_path %></li>
-
-
-                <% end %>
-    </div>
-
-
-
-    <div class="jumbotron imgfondo3">
-      <h1>Spanglish!</h1>
-      <p>The best community in Santiago Chile</p>
-
-
-                    <% if user_signed_in?%>
-                <strong>Hello, </strong><%= current_user.email %>
-                 <%= link_to "salir", destroy_user_session_path, method: "Delete", :style => 'color:orange'%>
-                &nbsp;&nbsp;
-                <% else %>
-
-
-
-              <li class="btn btn-primary btn-lg" style="font-weight: bold"><%= link_to "Join us!", new_user_registration_path %></li>
-
-
-                <% end %>
-    </div>
-
-    <div class="jumbotron imgfondo4">
-      <h1>Spanglish!</h1>
-      <p>The best community in Santiago Chile</p>
-
-
-                    <% if user_signed_in?%>
-                <strong>Hello, </strong><%= current_user.email %>
-                 <%= link_to "salir", destroy_user_session_path, method: "Delete", :style => 'color:orange'%>
-                &nbsp;&nbsp;
-                <% else %>
-
-
-
-              <li class="btn btn-primary btn-lg" style="font-weight: bold"><%= link_to "Join us!", new_user_registration_path %></li>
-
-
-                <% end %>
-    </div>
-
-    <div class="jumbotron imgfondo5">
-      <h1>Spanglish!</h1>
-      <p>The best community in Santiago Chile</p>
-
-
-                    <% if user_signed_in?%>
-                <strong>Hello, </strong><%= current_user.email %>
-                 <%= link_to "salir", destroy_user_session_path, method: "Delete", :style => 'color:orange'%>
-                &nbsp;&nbsp;
-                <% else %>
-
-
-
-              <li class="btn btn-primary btn-lg" style="font-weight: bold"><%= link_to "Join us!", new_user_registration_path %></li>
-
-
-                <% end %>
-
-    </div>
-
-
-
-                  <div class="jumbotron imgfondo1">
-      <h1>Spanglish!</h1>
-      <p>The best community in Santiago Chile</p>
-
-                    <% if user_signed_in?%>
-                <strong>Hello, </strong><%= current_user.email %>
-                 <%= link_to "salir", destroy_user_session_path, method: "Delete", :style => 'color:orange'%>
-                &nbsp;&nbsp;
-                <% else %>
-
-              <li class="btn btn-primary btn-lg" style="font-weight: bold"><%= link_to "Join us!", new_user_registration_path %></li>
-
-
-                <% end %>
-    </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  </div>
 </div>
-
