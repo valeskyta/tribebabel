@@ -5,9 +5,6 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     @posts = Post.all
-    @user = current_user
-    @user.name = params[:user_name]
-    @user.save
   end
 
 
