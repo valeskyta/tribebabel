@@ -1,8 +1,13 @@
 source 'https://rubygems.org'
+gem 'rails', '4.2.1'
+
 gem 'cancancan', '~> 1.10'
 gem 'devise'
+gem "omniauth"
+gem "omniauth-facebook"
+gem "omniauth-twitter"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.1'
+
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets

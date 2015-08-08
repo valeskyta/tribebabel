@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  match 'users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], as: :finish_signup
+
 
   post 'users/edit'
   # users_controler.rb metodo edit
@@ -17,7 +19,7 @@ Rails.application.routes.draw do
   get 'language_users/create'
   resources :language_users
   resources :languages
-  devise_for :users
+  devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks' }
 
   post 'add_name' => 'users#add_name'
 
