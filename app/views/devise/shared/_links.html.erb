@@ -19,9 +19,16 @@
 <% end -%>
 
 <%- if devise_mapping.omniauthable? %>
-  <%- resource_class.omniauth_providers.each do |provider| %>
-    <%= link_to "Sign in with?como se cual es Fbook y cual es twitter??? #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider) %><br />
-  <% end -%>
+	<div class="row omb_row-sm-offset-3 omb_socialButtons">
+		<%- resource_class.omniauth_providers.each do |provider| %>
+	    <div class="col-xs-6 col-sm-3">
+	    	<%= link_to(omniauth_authorize_path(resource_name, provider), class: "btn btn-lg btn-block omb_btn-#{provider.to_s}") do %>
+				<i class="fa fa-#{provider.to_s} visible-xs"></i>
+             	<span class="hidden-xs"><%= provider.to_s.titleize %></span>
+	    	<% end -%>
+        </div>
+		<% end %>
+	</div>
 <% end -%>
 
 

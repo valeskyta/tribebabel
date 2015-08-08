@@ -1,36 +1,11 @@
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 
-
-
-  <%= render "devise/shared/links" %>
-
-
-
-
-
 <div class="container">
 
 
-    <div class="omb_login">
-      <h3 class="omb_authTitle">Login or <a href="#">Sign </a></h3>
-    <div class="row omb_row-sm-offset-3 omb_socialButtons">
-          <div class="col-xs-6 col-sm-3">
-            <a href="#
-
-
-
-            " class="btn btn-lg btn-block omb_btn-facebook">
-              <i class="fa fa-facebook visible-xs"></i>
-              <span class="hidden-xs">Facebook</span>
-            </a>
-          </div>
-          <div class="col-xs-6 col-sm-3">
-            <a href="#" class="btn btn-lg btn-block omb_btn-twitter">
-              <i class="fa fa-twitter visible-xs"></i>
-              <span class="hidden-xs">Twitter</span>
-            </a>
-          </div>
-    </div>
+  <div class="omb_login">
+    <h3 class="omb_authTitle">Login</h3>
+    <%= render "devise/shared/links" %>
 
     <div class="row omb_row-sm-offset-3 omb_loginOr">
       <div class="col-xs-12 col-sm-6">
@@ -41,23 +16,36 @@
 
     <div class="row omb_row-sm-offset-3">
       <div class="col-xs-12 col-sm-6">
-          <form class="omb_loginForm" action="" autocomplete="off" method="POST">
+        <form class="omb_loginForm" action="" autocomplete="off" method="POST">
           <div class="input-group">
+            <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
             <span class="input-group-addon"><i class="fa fa-user"></i></span>
-            <input type="text" class="form-control" name="username" placeholder="email address">
+            <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "email address" %>
           </div>
+
           <span class="help-block"></span>
+          <div class="form-group">
+            <div class="field">
+
+            </div>
+          </div>
 
           <div class="input-group">
             <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-            <input  type="password" class="form-control" name="password" placeholder="Password">
+              <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Password" %>
           </div>
-                    <span class="help-block">Password error</span>
+          <span class="help-block">Password error</span>
 
-          <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+
+
+
+
+
+          <%= f.submit "Log in", class: "btn btn-lg btn-primary btn-block" %>
+
         </form>
       </div>
-      </div>
+    </div>
     <div class="row omb_row-sm-offset-3">
       <div class="col-xs-12 col-sm-3">
         <label class="checkbox">
@@ -66,49 +54,27 @@
       </div>
       <div class="col-xs-12 col-sm-3">
         <p class="omb_forgotPwd">
-          <a href="#">Forgot password?</a>
+          <a href="#">Forgot password?XX</a>
         </p>
       </div>
     </div>
   </div>
-
-<div class="container">
-  <h2>Log in</h2>
-  <div class="row">
-    <div class="col-md-5">
-
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <div class="form-group">
-        <div class="field">
-          <%= f.label :email %><br />
-          <%= f.email_field :email, autofocus: true %>
+  ----------------------------
+        <% if devise_mapping.rememberable? -%>
+        <div class="form-group">
+          <div class="field">
+            <%= f.check_box :remember_me %>
+            <%= f.label :remember_me %>
+          </div>
         </div>
-      </div>
-
-      <div class="form-group">
-        <div class="field">
-          <%= f.label :password %><br />
-          <%= f.password_field :password, autocomplete: "off" %>
-        </div>
-      </div>
-
-      <% if devise_mapping.rememberable? -%>
-      <div class="form-group">
-        <div class="field">
-          <%= f.check_box :remember_me %>
-          <%= f.label :remember_me %>
-        </div>
-      </div>
-      <% end -%>
-
-      <div class="actions">
-        <%= f.submit "Log in" %>
-      </div>
-    </div>
-  </div>
-  <% end %>
+        <% end -%>
 
 
-  </div>
+
+
+
+    <% end %>
+
+
 
 

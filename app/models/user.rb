@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :omniauthable, omniauth_providers: [:twitter, :facebook]
+         :omniauthable, omniauth_providers: [:facebook, :twitter]
 
   validates :gender, presence:true
   validates :country_id, presence:true
@@ -26,7 +26,6 @@ class User < ActiveRecord::Base
   def has_language? language_id
     self.languages.where(id: language_id).any?
   end
-
 
   def self.find_for_oauth(auth, signed_in_resource = nil)
     identity = Identity.find_for_oauth(auth)
