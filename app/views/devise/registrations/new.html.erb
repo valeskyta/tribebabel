@@ -1,104 +1,168 @@
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 
 <div class="container">
+  <div class="omb_login">
+    <h3 class="omb_authTitle">Sign up or
+      <%- if controller_name != 'sessions' %>
+      <%= link_to "Log in", new_session_path(resource_name) %>
+      <% end -%>
 
-    <div class="omb_login">
-      <h3 class="omb_authTitle"><a href="#">Sign up</a></h3>
-      <%= render "devise/shared/links" %>
-
+    </h3>
+    <%= render "devise/shared/links" %>
 
     <div class="row omb_row-sm-offset-3 omb_loginOr">
-      <div class="col-xs-12 col-sm-6">
+      <div class="col-xs-6 col-sm-6">
         <hr class="omb_hrOr">
         <span class="omb_spanOr">or</span>
       </div>
     </div>
 
+
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            <!-- como será el error message??             -->
     <div class="row omb_row-sm-offset-3">
-      <div class="col-xs-12 col-sm-6">
-          <form class="omb_loginForm" action="" autocomplete="off" method="POST">
+      <div class="col-xs-6 col-sm-6">
+        <form class="omb_loginForm" action="" autocomplete="off" method="POST">
+          <div class="input-group">
+          <span class="help-block">
+          <%= devise_error_messages! %>
+          </span>
+    </div>
+
+
+        <form class="omb_loginForm" action="" autocomplete="off" method="POST">
           <div class="input-group">
             <span class="input-group-addon"><i class="fa fa-user"></i></span>
-            <input type="text" class="form-control" name="username" placeholder="email address">
-
-
-
-
+            <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "email address" %>
           </div>
+<!-- Esppacio entre cuadros -->
           <span class="help-block"></span>
+          <div class="form-group">
+            <div class="field">
 
+            </div>
+          </div>
+
+          <!-- PASSWORD -->
+
+          <% if @validatable %>
+          <% @minimum_password_length %>
+          <% end %>
+<!-- cuadradito gris con candado -->
           <div class="input-group">
             <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-            <input  type="password" class="form-control" name="password" placeholder="Password">
+            <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Password (minimum 8 characters)" %>
           </div>
-                    <span class="help-block">Password error</span>
+          <!-- Esppacio entre cuadros -->
+          <span class="help-block"></span>
+          <div class="form-group">
+            <div class="field">
 
-          <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+            </div>
+          </div>
+          <!-- cuadradito gris con candado -->
+          <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+            <!-- PASSWORD conirmation-->
+            <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "Password confirmation" %>
+          </div>
+
+<!-- Esppacio entre cuadros -->
+        <span class="help-block"></span>
+          <div class="form-group">
+            <div class="field">
+
+            </div>
+          </div>
+
+
+
+<!-- GENDER -->
+  <!-- cuadradito gris con candado -->
+          <div class="input-group">
+            <span class="input-group-addon">GENDER</span>
+            <%= f.select(:gender) do %>
+            <%= [['female', 'f'], ['male', 'm'], ['other', 'o']].each do |c| %>
+            <%= content_tag(:option, c.first, value: c.last)%>
+            <% end %>
+            <% end %>
+          </div>
+<!-- Esppacio entre cuadros -->
+          <span class="help-block"></span>
+          <div class="form-group">
+            <div class="field">
+
+            </div>
+          </div>
+
+<!-- COUNTRY       -->
+          <div class="input-group">
+            <span class="input-group-addon">Country</span>
+            <%= f.select :country_id, Country.all.map { |country| [country.name,country.id] }  %>
+          </div>
+<!-- Esppacio entre cuadros -->
+          <span class="help-block"></span>
+          <div class="form-group">
+            <div class="field">
+
+            </div>
+          </div>
+
+<!-- SIGN UP -->
+          <%= f.submit "Sign up", class: "btn btn-lg btn-primary btn-block" %>
+
         </form>
       </div>
-      </div>
-    <div class="row omb_row-sm-offset-3">
-      <div class="col-xs-12 col-sm-3">
-        <label class="checkbox">
-          <input type="checkbox" value="remember-me">Remember Me
-        </label>
-      </div>
-      <div class="col-xs-12 col-sm-3">
-        <p class="omb_forgotPwd">
-          <a href="#">Forgot password?</a>
-        </p>
-      </div>
+    </div>
+
+    <!-- REMEMBER ME -->
+    <% if devise_mapping.rememberable? -%>
+    <div>
+      <div class="row omb_row-sm-offset-3">
+        <div class="col-xs-12 col-sm-3">
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me %>
+          <% end -%>
+        </div>
+
+        <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+        <% end -%>
     </div>
   </div>
+</div>
 
-----------------------------------
-<div class="container">
-  <h2>Sign up</h2>
-  <div class="row">
-    <div class="col-md-5">
+<% end %>
 
+</div>
+<!-- ------------------------- -->
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= devise_error_messages! %>
 
-      <div class="field">
         <%= f.label :email %><br />
         <%= f.email_field :email, autofocus: true %>
-      </div>
 
-      <div class="field">
         <%= f.label :password %>
         <% if @validatable %>
         <em>(<%= @minimum_password_length %> characters minimum)</em>
         <% end %><br />
         <%= f.password_field :password, autocomplete: "off" %>
-      </div>
 
-      <div class="field">
         <%= f.label :password_confirmation %><br />
         <%= f.password_field :password_confirmation, autocomplete: "off" %>
-      </div>
 
-      <div class="form-group">
         <%= f.label :gender, "Gender:" %><br />
         <%= f.select(:gender) do %>
         <%= [['female', 'f'], ['male', 'm'], ['other', 'o']].each do |c| %>
         <%= content_tag(:option, c.first, value: c.last) %>
         <% end %>
         <% end %>
-      </div>
 
-      <div class="form-group">
         <%= f.label :country_id, "Country" %><br>
         <%= f.select :country_id, Country.all.map { |country| [country.name,country.id] }  %>
-      </div>
 
-      <div class="actions">
         <%= f.submit "Sign up" %>
-      </div>
-    </div>
-  </div>
 
 <% end %>
 
-<%= render "devise/shared/links" %>
-</div>
+
+
