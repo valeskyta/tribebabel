@@ -6,6 +6,8 @@ gem 'devise'
 gem "omniauth"
 gem "omniauth-facebook"
 gem "omniauth-twitter"
+gem 'carrierwave'
+gem 'mini_magick'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 
 # Use postgresql as the database for Active Record

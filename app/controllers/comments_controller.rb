@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
   def create
     @post = Post.find(params[:post_id])
     @comment = @post.comments.build(comment_params) #coment_params sin S, se la sacamos
-    @comment.user = current_user
+    @comment.user = current_user # esto hace que los comentarios le pertenezcan al usuario
     if @comment.save
       redirect_to @post, notice: "Your comment was created"
     else
