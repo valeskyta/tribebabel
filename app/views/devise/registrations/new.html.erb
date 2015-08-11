@@ -75,17 +75,11 @@
             </div>
           </div>
 
-
-
 <!-- GENDER -->
   <!-- cuadradito gris con candado -->
           <div class="input-group">
-            <span class="input-group-addon">GENDER</span>
-            <%= f.select(:gender) do %>
-            <%= [['female', 'f'], ['male', 'm'], ['other', 'o']].each do |c| %>
-            <%= content_tag(:option, c.first, value: c.last)%>
-            <% end %>
-            <% end %>
+            <span class="input-group-addon">Gender</span>
+            <%= f.select(:gender, [['female', 'f'], ['male', 'm'], ['other', 'o']], {include_blank: "Seleciona tu genero"}, {class: "form-control"})  %>
           </div>
 <!-- Esppacio entre cuadros -->
           <span class="help-block"></span>
@@ -98,7 +92,7 @@
 <!-- COUNTRY       -->
           <div class="input-group">
             <span class="input-group-addon">Country</span>
-            <%= f.select :country_id, Country.all.map { |country| [country.name,country.id] }  %>
+            <%= f.select(:country_id, Country.all.map { |country| [country.name,country.id] }, {include_blank: "Seleciona tu pais"}, {class: "form-control"}) %>
           </div>
 <!-- Esppacio entre cuadros -->
           <span class="help-block"></span>
@@ -134,35 +128,7 @@
 <% end %>
 
 </div>
-<!-- ------------------------- -->
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <%= devise_error_messages! %>
 
-        <%= f.label :email %><br />
-        <%= f.email_field :email, autofocus: true %>
-
-        <%= f.label :password %>
-        <% if @validatable %>
-        <em>(<%= @minimum_password_length %> characters minimum)</em>
-        <% end %><br />
-        <%= f.password_field :password, autocomplete: "off" %>
-
-        <%= f.label :password_confirmation %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "off" %>
-
-        <%= f.label :gender, "Gender:" %><br />
-        <%= f.select(:gender) do %>
-        <%= [['female', 'f'], ['male', 'm'], ['other', 'o']].each do |c| %>
-        <%= content_tag(:option, c.first, value: c.last) %>
-        <% end %>
-        <% end %>
-
-        <%= f.label :country_id, "Country" %><br>
-        <%= f.select :country_id, Country.all.map { |country| [country.name,country.id] }  %>
-
-        <%= f.submit "Sign up" %>
-
-<% end %>
 
 
 

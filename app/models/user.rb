@@ -11,9 +11,12 @@ class User < ActiveRecord::Base
   has_many :languageUsers
   has_many :languages, through: :languageUsers
 
+  belongs_to :country
+
 
   has_many :posts, :dependent => :destroy
   has_many :comments, :dependent => :destroy
+  has_many :identities, dependent: :destroy
 
   enum role: [:guest, :moderator]
 
@@ -32,47 +35,36 @@ class User < ActiveRecord::Base
     user = signed_in_resource ? signed_in_resource : identity.user
 
     if user.nil?
-      email = auth.info.email
-      user = User.find_by(email: email) if email
+      email_is_verified = auth.info.email && (auth.info.verified || auth.info.verified_email)
+      email = auth.info.email if email_is_verified
+      user = User.where(email:email).first if email
 
-      # Create the user if it's a new registration
       if user.nil?
-        password = Devise.friendly_token[0,20]
-        if auth.provider == 'facebook'
+        binding.pry
+        if identity.provider == "twitter"
           user = User.new(
-            email: email ? email : "#{auth.uid}@change-me.com",
-            password: password,
-            password_confirmation: password
+            name: auth.info.name,
+            email: email ? email : "update@me.com",
+            gender: auth.extra.raw_info.gender,
+            password: Devise.friendly_token[0,20]
           )
-        elsif auth.provider == 'twitter'
+        else
           user = User.new(
-            email: "#{auth.uid}@change-me.com",
-            password: password,
-            password_confirmation: password
+            name: auth.info.name,
+            email: email ? email : "update@me.com",
+            gender: auth.extra.raw_info.gender,
+            password: Devise.friendly_token[0,20]
           )
         end
+        user.save!
       end
-      user.save!
     end
 
-    if identity.user != user
+    unless identity.user == user
       identity.user = user
       identity.save!
     end
-
     user
-  end
-
-  def email_verified?
-    if self.email
-      if self.email.split('@')[1] == 'change-me.com'
-        return false
-      else
-        return true
-      end
-    else
-      return false
-    end
   end
 end
 
