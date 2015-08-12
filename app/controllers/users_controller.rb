@@ -2,9 +2,15 @@ class UsersController < ApplicationController
   def add_name
     @user = current_user
     @user.name = params[:user_name]
-    @user.save
+    @user.save!
+    p @user.to_json
 
     redirect_to new_post_path
+  end
+
+# esto muestra todos los usuarios, se crea la ruta y la vista get 'users/show_users'
+  def show_users
+    @users = User.all
   end
 
   def finish_signup

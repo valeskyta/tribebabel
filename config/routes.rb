@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  get 'profiles/show/:id', to: 'profiles#show'
+  get 'profiles/show'
+  get 'profiles/edit'
+  post 'profiles/edit'
+  get 'users/show_users'
+
+  get 'show' => 'profiles#show'
+
   devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks' }
 
 

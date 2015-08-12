@@ -1,0 +1,7 @@
+       <%= form_tag 'add_name' do %>
+        <div class="field">
+        <%= label_tag :name %><br />
+        <%= text_field_tag :user_name, "", autofocus: true %>
+      </div>
+        <%= submit_tag 'Enviar' %>
+      <% end %>

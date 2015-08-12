@@ -20,8 +20,10 @@
                 <li><a href="#">Volunteering</a></li>
 
                 <% if user_signed_in?%>
+                <li><a href="<%= users_show_users_path  %>">Members</a></li>
 
-                <li><a href="<%= language_users_index_path  %>">Tribes</a></li>
+
+                <li><a href="<%= profiles_show_path  %>">My Profile</a></li>
 
 
                 <% end %>

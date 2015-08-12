@@ -1,0 +1,11 @@
+<% @users.each do |user| %>
+	<p>
+	<%= user.name %>
+	</p>
+<% end %>
+
+<% @users.each do |user| %>
+<p>
+	<%= profiles_show_path(user.id) %>
+	</p>
+<% end %>

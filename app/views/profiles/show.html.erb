@@ -1,0 +1,74 @@
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+<div class="container">
+    <div class="fb-profile">
+        <img align="left" class="fb-image-lg" src="http://lorempixel.com/850/280/nightlife/5/" alt="Profile image example"/>
+        <img align="left" class="fb-image-profile thumbnail" src="http://lorempixel.com/180/180/people/9/" alt="Profile image example"/>
+        <div class="fb-profile-text">
+            <h2>
+            <% if @user.name %>
+			<%= @user.name %>
+           <% else %>
+            Your name
+
+           <% end -%>
+            </h2>
+        </div>
+    </div>
+<!-- NAILTHUMBS     -->
+    <div class="col-sm-6 col-md-4">
+      <div class="thumbnail">
+        <div style="padding:10px 30px">
+          <h4><%= @user.email %></h4>
+          <h5>Text</h5>
+          <ul class="list-unstyled">
+
+            <li>
+              <p>
+				hola
+             </p>
+           </li>
+             <li>
+
+				BIO: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam dolores adipisci commodi in temporibus quae nobis labore a doloremque recusandae, esse consequuntur beatae sapiente omnis aspernatur iste nesciunt corrupti porro.
+
+           </li>
+
+         </ul>
+      		<%= link_to 'Edit your Profile', edit_user_registration_path, class: 'btn btn-primary btn-sm', style: 'font-weight:bold' %>
+
+       </div>
+     </div>
+   </div>
+
+
+<!-- TRIBUS -->
+    <div>
+	    <%= render "language_users/tribes_languages" %>
+
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

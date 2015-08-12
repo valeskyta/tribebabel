@@ -8,13 +8,14 @@ class User < ActiveRecord::Base
   validates :gender, presence:true
   validates :country_id, presence:true
 
-  has_many :languageUsers
-  has_many :languages, through: :languageUsers
+  has_many :languageUsers, :dependent => :destroy
+  has_many :languages, through: :languageUsers, :dependent => :destroy
 
   belongs_to :country
 
 
   has_many :posts, :dependent => :destroy
+  has_many :invitation_list, :dependent => :destroy
   has_many :comments, :dependent => :destroy
   has_many :identities, dependent: :destroy
 

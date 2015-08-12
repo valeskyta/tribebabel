@@ -45,51 +45,8 @@
      </div>
    </div>
  </div>
-
- <div class="col-sm-6 col-md-4">
-  <div class="thumbnail">
-    <div class="container" style="padding:2px 30px">
-      <h3>Connect with your Tribes!</h3>
-      <h4>As native speaker:</h4>
-
-
-      <% if @native_languages_user.any? %>
-
-      <ul class="list-unstyled">
-       <% @native_languages_user.each do |language| %>
-       <li>
-         <h4 class="glyphicon glyphicon-globe"style="padding: 5px 1px 0px 10px; color:#df691a">
-          <%= language.name %> </h4>
-        </li>
-        <% end %>
-
-      </ul>
-      <% else %>
-      <p>You haven't select any native language.</p>
-      <% end %>
-
-
-      <h4>As a second language:</h4>
-
-
-      <% if @second_languages_user.any? %>
-
-      <ul class="list-unstyled">
-
-        <% @second_languages_user.each do |language| %>
-        <li>
-          <h4 class="glyphicon glyphicon-globe"style="padding: 5px 1px 0px 10px; color:#df691a">
-            <%= language.name %> </h4>
-          </li>
-          <% end %>
-
-        </ul>
-        <% else %>
-        <p>You haven't select any second language.</p>
-        <% end %>
-      </div>
-    </div>
-  </div>
+<!-- RENDER -->
+<%= render "tribes_languages" %>
 </div>
 </div>
 
