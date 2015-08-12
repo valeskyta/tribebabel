@@ -1,9 +1,11 @@
+
+
 <div class="container">
 <div class="col-sm-6 col-md-4">
 <div class="well" style="padding:20px">
 <h3>Edit your Profile</h3>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, multipart: true }) do |f| %>
   <%= devise_error_messages! %>
 
 <!-- PICTURE -->
@@ -11,7 +13,7 @@
     <%= f.label :picture %><br>
     <%= f.file_field :picture %>
     <%= f.hidden_field :picture_cache %>
-    <%= image_tag(@post.picture, size:"64x64") if @post.picture? %>
+
 
   </div>
 <!-- NAME -->
@@ -19,6 +21,19 @@
     <%= f.label :name %><br />
     <%= f.text_field :name, autofocus: true %>
   </div>
+
+<!-- BIO
+YOUR PASSION
+TELL US ABOUT YOURSELF
+WHY DID YOU JOIN THIS COMMUNITY?
+TELL US ABOUT YOUR PAST AND FUTURE TRAVELS
+bio
+passion
+travels
+ -->
+
+
+
 <!-- PASSWORD NECESARIO -->
   <div class="field">
     <%= f.label :current_password %><br />
