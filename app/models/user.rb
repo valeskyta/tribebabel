@@ -22,6 +22,8 @@ class User < ActiveRecord::Base
 
   before_save :default_values
 
+  mount_uploader :picture, PictureUploader
+
     def default_values
     self.role ||=0
   end
