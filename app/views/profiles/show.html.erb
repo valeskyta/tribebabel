@@ -2,7 +2,8 @@
 <div class="container">
     <div class="fb-profile">
         <img align="left" class="fb-image-lg" src="http://lorempixel.com/850/280/nightlife/5/" alt="Profile image example"/>
-        <%= image_tag(@user.picture, align: 'left', class: "fb-image-profile thumbnail")  %>
+        <%= image_tag(@user.picture.thumb_profile, align: 'left', class: "fb-image-profile thumbnail") if @user.picture  %>
+
         <div class="fb-profile-text">
           <h2>
             <% if @user.nickname %>

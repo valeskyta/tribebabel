@@ -3,11 +3,12 @@
 <% @users.each do |user| %>
 	<div class="col-xs-4 col-md-2" >
 
-		<div class="card">
+		<div class="card" style="margin:10px 0px 10px 0px">
 		<div class="thumbnail">
 
 				<%= image_tag user.picture, class: "img-circle", style: "padding: 15px" %>
 				<p align="center"><%= user.nickname %></p>
+				<p align="center"><%= user.email %></p>
 				<p align="center"><%= link_to 'Show profile', "/profiles/show/#{user.nickname}" %></p>
 		</div>
 		</div>
@@ -16,6 +17,7 @@
 	<% end %>
 </div>
 </div>
+
 
 
 
