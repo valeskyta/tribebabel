@@ -1,40 +1,53 @@
 <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 <div class="container">
     <div class="fb-profile">
-    <%= image_tag(@user.picture, size:"100x100")  %>
         <img align="left" class="fb-image-lg" src="http://lorempixel.com/850/280/nightlife/5/" alt="Profile image example"/>
-        <img align="left" class="fb-image-profile thumbnail" src="http://lorempixel.com/180/180/people/9/" alt="Profile image example"/>
+        <%= image_tag(@user.picture, align: 'left', class: "fb-image-profile thumbnail")  %>
         <div class="fb-profile-text">
-            <h2>
-            <% if @user.name %>
-			<%= @user.name %>
+          <h2>
+            <% if @user.nickname %>
+			<%= @user.nickname %>
            <% else %>
-            Your name
-
+            Your Nickname
            <% end -%>
-            </h2>
+          </h2>
         </div>
     </div>
 <!-- NAILTHUMBS     -->
     <div class="col-sm-6 col-md-4">
       <div class="thumbnail">
         <div style="padding:10px 30px">
-          <h4><%= @user.email %></h4>
-          <h5>Text</h5>
-          <ul class="list-unstyled">
+<!-- PASSION  -->
+        <div class="">
 
-            <li>
-              <p>
-				hola
-             </p>
-           </li>
-             <li>
+            <% if @user.passion %>
+      <p><%= @user.passion %></p>
+           <% else %>
+            <h4>Your passion</h4>
+           <% end -%>
 
-				BIO: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam dolores adipisci commodi in temporibus quae nobis labore a doloremque recusandae, esse consequuntur beatae sapiente omnis aspernatur iste nesciunt corrupti porro.
+        </div>
+<!-- TRAVELS -->
+        <div class="">
+          <p>
+            <% if @user.travels %>
+      <p><%= @user.travels %></p>
+           <% else %>
+            <h4>Your travels</h4>
+           <% end -%>
+          </p>
+        </div>
+<!-- BIO -->
+        <div class="">
+          <h4>
+            <% if @user.bio %>
+      <p><%= @user.bio %></p>
+           <% else %>
+            <h4>Your Bio</h4>
+          <% end -%>
+          </h4>
+        </div>
 
-           </li>
-
-         </ul>
       		<%= link_to 'Edit your Profile', edit_user_registration_path, class: 'btn btn-primary btn-sm', style: 'font-weight:bold' %>
 
        </div>

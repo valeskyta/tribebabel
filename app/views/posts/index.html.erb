@@ -1,60 +1,105 @@
+<script src="js/comments.js"> </script>
 <div class="container">
-  <div class="[ col-xs-12 col-sm-offset-2 col-sm-8 ]">
-    <h3>Listing Posts</h3>
+      <div class="row">
 
 
-    <% @posts.each do |post| %>
-    <div>
-      <div class="thumbnail" style= "margin-bottom: 2px">
-        <p><strong>Post by:</strong>
-        <%= post.user.name  %></p>
-      </div>
-
-    </div>
-
-     <%= image_tag(post.picture.thumb)  %>
-
-    <div class="thumbnail" style= "margin-bottom: 2px">
-      <p>Post: <%= post.content %></p>
-    </div>
-
-
-
-    <div>
-      <div class="thumbnail" style= "margin-bottom: 2px">
-        <p>Comment: <%= truncate(post.comments.last.comment, length: 100) unless post.comments.last.nil? %></p>
-      </div>
-    </div>
-
-    <div style="margin-bottom: 20px">
-
-      <%= link_to 'See more', post %>
-
-      <%= link_to 'Edit', edit_post_path(post) if can? :edit, post %>
-
-
-      <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } if can? :destroy, post%>
-
-    </div>
-
-
-    <% end %>
-
-
+        <div class="[ col-xs-12 col-sm-offset-1 col-sm-5 ]">
+    <!-- MODAL -->
     <% if user_signed_in? %>
       <span style="margin-bottom: 20px">
         <% unless current_user.name.nil? %>
-        <strong><%= link_to 'New Post', new_post_path %></strong>
+        <strong><%= link_to 'New Post', new_post_path,  class: "btn btn-primary" %></strong>
         <% else %>
         <button data-toggle="modal" class="btn btn-primary" data-target="#myModal">New Post</button>
         <%= render "shared/modal" %>
         <% end %>
       </span>
-    <% end %>
-  </div>
+              </div>
+        </div>
+
+      <div class="row">
+
+    <% @posts.each do |post| %>
+        <div class="[ col-xs-12 col-sm-offset-1 col-sm-5 ]">
+            <div class="[ panel panel-default ] panel-google-plus">
+                <div class="dropdown">
+                    <span class="dropdown-toggle" type="button" data-toggle="dropdown">
+                        <span class="[ glyphicon glyphicon-chevron-down ]"></span>
+                    </span>
+                    <ul class="dropdown-menu" role="menu">
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+                        <li role="presentation" class="divider"></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
+                    </ul>
+                </div>
+
+                <div class="panel-heading">
+        <!-- FOTO         -->
+            <!-- FOTO USUARIO   -->
+
+                <%= image_tag(post.user.picture, size: "60x60", class: "img-circle pull-left", style: "padding: 5px") %>
+
+
+      <!-- NICKNAME               -->
+                    <h3 style="padding: 5px"><%= post.user.nickname %></h3>
+                    <h5><span>Shared publicly</span> - <span>Jun 27, 2015</span> </h5>
+                </div>
+                <div class="panel-body">
+    <!-- POST -->
+                     <!-- POST    -->
+                     <p>Post: <%= post.content %>
+                      <%= image_tag(post.picture.thumb)  %></p>
+                </div>
+                <div class="panel-footer">
+  <!-- ???? PARA QUE ES EL BOTON +1?               -->
+
+                    <button type="button" class="[ btn btn-default ]">
+                        <span class="[ glyphicon glyphicon-share-alt ]"></span>
+                    </button>
+           <!-- PLACEHOLDER COMMENT          -->
+
+                    <div class="input-placeholder">Add a comment...</div>
+                </div>
+
+<!-- COMMENT                 -->
+                <div class="panel-google-plus-comment">
+
+    <!-- FOTO USUSARIO             -->
+                    <img class="img-circle" src="https://lh3.googleusercontent.com/uFp_tsTJboUY7kue5XAsGA=s46" alt="User Image" />
+                    <div class="panel-google-plus-textarea">
+           <!-- TEXTO COMENTARIO -->
+                        <textarea rows="4"><!-- COMMENT -->
+        Comment: <%= truncate(post.comments.last.comment, length: 100) unless post.comments.last.nil? %></textarea>
+               <!-- BOTON SUBMIT COMMENT          -->
+                        <button type="submit" class="[ btn btn-success disabled ]">Post comment</button>
+
+
+
+                <!-- BOTON CANEL COMMENT -->
+                        <button type="reset" class="[ btn btn-default ]">Cancel</button>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+                                          <!-- BOTONES SHOW EDIT DESTROY -->
+    <div style="margin-bottom: 20px">
+      <%= link_to 'See more', post %>
+      <%= link_to 'Edit', edit_post_path(post) if can? :edit, post %>
+      <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } if can? :destroy, post%>
+
+        </div>
+        </div>
+        <% end %>
+
+
+
+
+
+<% end %>
 
 </div>
-
 
 
 

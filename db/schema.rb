@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150812065211) do
+ActiveRecord::Schema.define(version: 20150813010457) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -118,6 +118,11 @@ ActiveRecord::Schema.define(version: 20150812065211) do
     t.integer  "role"
     t.integer  "country_id"
     t.string   "picture"
+    t.text     "bio"
+    t.text     "passion"
+    t.text     "travels"
+    t.string   "coverpicture"
+    t.string   "nickname"
   end
 
   add_index "users", ["country_id"], name: "index_users_on_country_id", using: :btree

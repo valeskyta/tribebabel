@@ -1,11 +1,30 @@
+<div class="container">
+<div class="row">
 <% @users.each do |user| %>
-	<p>
-	<%= user.name %>
-	</p>
-<% end %>
+	<div class="col-xs-4 col-md-2" >
 
-<% @users.each do |user| %>
-<p>
-	<%= profiles_show_path(user.id) %>
-	</p>
-<% end %>
+		<div class="card">
+		<div class="thumbnail">
+
+				<%= image_tag user.picture, class: "img-circle", style: "padding: 15px" %>
+				<p align="center"><%= user.nickname %></p>
+				<p align="center"><%= link_to 'Show profile', "/profiles/show/#{user.nickname}" %></p>
+		</div>
+		</div>
+
+	</div>
+	<% end %>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+

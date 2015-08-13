@@ -1135,7 +1135,7 @@ img {
 .img-thumbnail {
   padding: 4px;
   line-height: 1.42857143;
-  background-color: #2b3e50;
+  background-color: red;
   border: 1px solid #dddddd;
   border-radius: 0;
   -webkit-transition: all 0.2s ease-in-out;
@@ -7031,7 +7031,7 @@ a.list-group-item-danger.active:focus {
   color: #ebebeb;
 }
 .thumbnail {
-  background-color: #4e5d6c;
+  background-color: #29556E;
   border: none;
 }
 .modal {

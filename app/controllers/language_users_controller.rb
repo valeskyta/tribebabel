@@ -37,7 +37,7 @@ end
 
 
 
-redirect_to language_users_index_path, notice:  @mensaje
+redirect_to  profiles_show_path, notice:  @mensaje
 
 
 

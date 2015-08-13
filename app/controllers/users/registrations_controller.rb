@@ -1,5 +1,5 @@
 class Users::RegistrationsController < Devise::RegistrationsController
-before_filter :configure_sign_up_params, only: [:create]
+before_filter :configure_sign_up_params
 # before_filter :configure_account_update_params, only: [:update]
 
   # def country
@@ -12,13 +12,9 @@ before_filter :configure_sign_up_params, only: [:create]
 
 
 
-
-
-
-  # PUT /resource
-  # def update
-  #   super
-  # end
+  def update
+    super
+  end
 
   # DELETE /resource
   # def destroy
@@ -39,13 +35,23 @@ before_filter :configure_sign_up_params, only: [:create]
   # You can put the params you want to permit in the empty array.
      def configure_sign_up_params
       #devise_parameter_sanitizer.for(:sign_up) << :email, :password, :password_confirmation
-       devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:email, :password, :password_confirmation, :gender, :country_id, :name) }
+       devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:email, :password, :password_confirmation, :gender, :country_id, :name, :picture, :picture_cache, :bio, :passion, :travels, :nickname ) }
+
+       devise_parameter_sanitizer.for(:account_update) << :bio
+       devise_parameter_sanitizer.for(:account_update) << :picture_cache
+       devise_parameter_sanitizer.for(:account_update) << :name
+       devise_parameter_sanitizer.for(:account_update) << :passion
+       devise_parameter_sanitizer.for(:account_update) << :travels
+       devise_parameter_sanitizer.for(:account_update) << :picture
+       devise_parameter_sanitizer.for(:account_update) << :nickname
+       devise_parameter_sanitizer.for(:account_update) << :coverpicture
+
      end
 
   # You can put the params you want to permit in the empty array.
-  # def configure_account_update_params
-  #   devise_parameter_sanitizer.for(:account_update) << :attribute
-  # end
+  def configure_account_update_params
+    devise_parameter_sanitizer.for(:account_update) << :bio
+  end
 
   # The path used after sign up.
   # def after_sign_up_path_for(resource)
@@ -57,3 +63,5 @@ before_filter :configure_sign_up_params, only: [:create]
   #   super(resource)
   # end
 end
+
+

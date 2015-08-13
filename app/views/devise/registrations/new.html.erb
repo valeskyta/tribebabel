@@ -29,8 +29,25 @@
           </span>
     </div>
 
+          <form class="omb_loginForm" action="" autocomplete="off" method="POST">
 
-        <form class="omb_loginForm" action="" autocomplete="off" method="POST">
+
+<!-- cuadradito gris  -->
+          <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+             <%= f.text_field :nickname, autofocus: true, class: "form-control", placeholder: "choose a unique nickname" %>
+          </div>
+
+
+<!-- Esppacio entre cuadros -->
+          <span class="help-block"></span>
+          <div class="form-group">
+            <div class="field">
+
+            </div>
+          </div>
+
+<!-- cuadradito gris  -->
           <div class="input-group">
             <span class="input-group-addon"><i class="fa fa-user"></i></span>
             <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "email address" %>

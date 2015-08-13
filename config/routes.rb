@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'profiles/show/:id', to: 'profiles#show'
+  get 'profiles/show/:nickname', to: 'profiles#show', as: 'user/profile'
   get 'profiles/show'
   get 'profiles/edit'
   post 'profiles/edit'
@@ -7,7 +7,10 @@ Rails.application.routes.draw do
 
   get 'show' => 'profiles#show'
 
-  devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks' }
+  devise_for :users, controllers: {
+    omniauth_callbacks: 'omniauth_callbacks',
+    registrations: 'users/registrations'
+  }
 
 
   match 'users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], as: :finish_signup

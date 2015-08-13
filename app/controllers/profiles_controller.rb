@@ -1,8 +1,9 @@
 class ProfilesController < ApplicationController
   # ruta get 'profiles/show/:id', to: 'profiles#show'
   def show
-    if params.key?(:id)
-      @user = User.find(params[:id])
+
+    if params.key?(:nickname)
+      @user = User.find_by(nickname: params[:nickname])
     else
       @user = current_user
     end
@@ -22,7 +23,6 @@ class ProfilesController < ApplicationController
 
 
   end
-
 
 
 
