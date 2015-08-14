@@ -1,5 +1,5 @@
 <% if user_signed_in?%>
-  <strong>Hello, </strong><%= current_user.email %>
+  <strong>Hello, </strong><%= current_user.nickname %>
    <%= link_to "salir", destroy_user_session_path, method: "Delete", :style => 'color:orange'%>
   &nbsp;&nbsp;
   <% else %>

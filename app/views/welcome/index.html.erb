@@ -6,7 +6,7 @@
       <p>The best community in Santiago Chile</p>
 
                     <% if user_signed_in?%>
-                <strong>Hello, </strong><%= current_user.email %> <strong> ! </strong>
+                <strong>Hello, </strong><%= current_user.nickname %> <strong> ! </strong>
                 <% else %>
 
               <li class="btn btn-primary btn-lg" style="font-weight: bold"><%= link_to "Join us!", new_user_registration_path %></li>
