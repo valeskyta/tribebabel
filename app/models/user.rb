@@ -5,9 +5,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:facebook, :twitter]
 
-  validates :gender, presence:true
-  validates :country_id, presence:true
-  validates :nickname, presence: true, length: 3..20, uniqueness: true, format: { without: /[!-\/\@\^\~\`\(\)\[\]\>\<\=]/ }
+  # validates :gender, presence:true
+  # validates :country_id, presence:true
+  # validates :nickname, presence: true, length: 3..20, uniqueness: true, format: { without: /[!-\/\@\^\~\`\(\)\[\]\>\<\=]/ }
 
   has_many :languageUsers, :dependent => :destroy
   has_many :languages, through: :languageUsers, :dependent => :destroy
